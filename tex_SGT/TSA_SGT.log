@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  23 SEP 2017 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 OCT 2017 14:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,23 +558,32 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip51
 \dth@everypar=\toks41
 )
-\c@theorem=\count135
-\c@corollary=\count136
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks42
+)
+\c@definition=\count135
+\c@theorem=\count136
+\c@corollary=\count137
+\c@lemma=\count138
 
+(/usr/local/texlive/2016/texmf-dist/tex/latex/doublestroke/dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count137
-\calc@Bcount=\count138
+\calc@Acount=\count139
+\calc@Bcount=\count140
 \calc@Adimen=\dimen185
 \calc@Bdimen=\dimen186
 \calc@Askip=\skip52
 \calc@Bskip=\skip53
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count139
+\calc@Ccount=\count141
 \calc@Cskip=\skip54
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -584,7 +593,7 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count140
+\g_MT_multlinerow_int=\count142
 \l_MT_multwidth_dim=\dimen187
 \origjot=\skip55
 \l_MT_shortvdotswithinadjustabove_dim=\dimen188
@@ -594,36 +603,43 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen192
 \l_MT_below_shortintertext_sep=\dimen193
 )
-(./TSA_SGT.aux)
+(./TSA_SGT.aux
+
+LaTeX Warning: Label `fig_max_perturbation_2bus' multiply defined.
+
+
+LaTeX Warning: Label `fig_max_perturbation_2bus' multiply defined.
+
+)
 \openout1 = `TSA_SGT.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 -- Lines per column: 58 (exact).
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count141
+\scratchcounter=\count143
 \scratchdimen=\dimen194
 \scratchbox=\box43
-\nofMPsegments=\count142
-\nofMParguments=\count143
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count144
+\nofMPsegments=\count144
+\nofMParguments=\count145
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count146
 \MPscratchDim=\dimen195
-\MPnumerator=\count145
-\makeMPintoPDFobject=\count146
-\everyMPtoPDFconversion=\toks43
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
+\everyMPtoPDFconversion=\toks44
 ) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -671,60 +687,99 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 76.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 76.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<picture/system_w_uncertainty.png, id=4, 569.12625pt x 356.33125pt>
+) [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+<picture/system_w_uncertainty.png, id=20, 569.12625pt x 356.33125pt>
 File: picture/system_w_uncertainty.png Graphic file (type png)
 
 <use picture/system_w_uncertainty.png>
-Package pdftex.def Info: picture/system_w_uncertainty.png used on input line 94
-.
+Package pdftex.def Info: picture/system_w_uncertainty.png used on input line 16
+8.
 (pdftex.def)             Requested size: 108.405pt x 67.87218pt.
- [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ Excluding 'comment' comment. [2 <./picture/system_w_uncertainty.png>]
+<picture/sector_bound_cos.png, id=28, 996.72375pt x 818.05624pt>
+File: picture/sector_bound_cos.png Graphic file (type png)
 
-
- <./picture/system_w_uncertainty.png>]
-<picture/sector_bound.png, id=23, 996.72375pt x 818.05624pt>
-File: picture/sector_bound.png Graphic file (type png)
-
-<use picture/sector_bound.png>
-Package pdftex.def Info: picture/sector_bound.png used on input line 175.
+<use picture/sector_bound_cos.png>
+Package pdftex.def Info: picture/sector_bound_cos.png used on input line 294.
 (pdftex.def)             Requested size: 231.26378pt x 189.79666pt.
+ [3 <./picture/sector_bound_cos.png>]
+<picture/sector_bound_vw.png, id=33, 996.72375pt x 818.05624pt>
+File: picture/sector_bound_vw.png Graphic file (type png)
 
-No file TSA_SGT.bbl.
-[2 <./picture/sector_bound.png>] (./TSA_SGT.aux) ) 
+<use picture/sector_bound_vw.png>
+Package pdftex.def Info: picture/sector_bound_vw.png used on input line 369.
+(pdftex.def)             Requested size: 231.26378pt x 189.79666pt.
+ [4 <./picture/sector_bound_vw.png>]
+<picture/max_pert_2bus.png, id=38, 762.85pt x 925.4575pt>
+File: picture/max_pert_2bus.png Graphic file (type png)
+
+<use picture/max_pert_2bus.png>
+Package pdftex.def Info: picture/max_pert_2bus.png used on input line 468.
+(pdftex.def)             Requested size: 231.26378pt x 280.54839pt.
+
+<picture/max_pert_39bus_loads.png, id=39, 720.6925pt x 540.0175pt>
+File: picture/max_pert_39bus_loads.png Graphic file (type png)
+
+<use picture/max_pert_39bus_loads.png>
+Package pdftex.def Info: picture/max_pert_39bus_loads.png used on input line 47
+6.
+(pdftex.def)             Requested size: 231.26378pt x 173.28705pt.
+
+<picture/max_pert_39bus_singlebus.png, id=40, 792.9625pt x 580.1675pt>
+File: picture/max_pert_39bus_singlebus.png Graphic file (type png)
+
+<use picture/max_pert_39bus_singlebus.png>
+Package pdftex.def Info: picture/max_pert_39bus_singlebus.png used on input lin
+e 484.
+(pdftex.def)             Requested size: 231.26378pt x 169.20033pt.
+ (./TSA_SGT.bbl [5 <./picture/max_pert_2bus.png (PNG copy)> <./picture/max_pert
+_39bus_loads.png (PNG copy)>])
+[6
+
+ <./picture/max_pert_39bus_singlebus.png (PNG copy)>] (./TSA_SGT.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 14104 strings out of 493014
- 275706 string characters out of 6133351
- 325855 words of memory out of 5000000
- 17367 multiletter control sequences out of 15000+600000
- 34688 words of font info for 70 fonts, out of 8000000 for 9000
+ 14220 strings out of 493014
+ 277697 string characters out of 6133351
+ 332566 words of memory out of 5000000
+ 17463 multiletter control sequences out of 15000+600000
+ 38924 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,54p,988b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texm
-f-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/
-times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr
-8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on TSA_SGT.pdf (2 pages, 260356 bytes).
+ 55i,13n,54p,839b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on TSA_SGT.pdf (6 pages, 440311 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
