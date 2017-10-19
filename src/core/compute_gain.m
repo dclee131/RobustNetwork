@@ -1,11 +1,7 @@
 %% Settings
-%clear; close all; sys_case=39; method=1;
-%method=1; % 1: Direct impulse computation / 2: using / 3: both
+%clear; close all; sys_case=39; method=1; % 1: Direct impulse computation / 2: using / 3: both
 
-%%
-if ~exist('sys_case','var'); sys_case=9; end % default IEEE system
-if ~exist('method','var'); method=1; end % default IEEE system
-
+%% Set up model
 run(['dyn' int2str(sys_case)]) % Get info from data file
 slack_bus=SW.con(1);
 num_bus=size(Bus.con,1);
@@ -40,10 +36,7 @@ S_inj=V_eq.*conj(I_eq);
 P_inj=real(S_inj);
 P_G=P_inj(idx_gen); P_G(Syn.con(:,1)==slack_bus)=-sum(P_inj(setdiff(Bus.con(:,1),slack_bus)));
 P_L=P_inj(idx_load);
-%P_inj=E'*diag(B_line)*sin(E*delta_eq);
 
-%num_gen=num_gen-1; num_bus=num_bus-1; idx_bus=setdiff(Bus.con(:,1),slack_bus);
-%M=M(Syn.con(:,1)~=slack_bus); D_G=D_G(Syn.con(:,1)~=slack_bus);
 E_G=E(:,idx_gen); E_L=E(:,idx_load); E=[E_G E_L];
 idx_delta_gen=1:num_gen; idx_omega=num_gen+1:2*num_gen; idx_delta_load=2*num_gen+1:num_bus+num_gen;
 idx_delta=[1:num_gen 2*num_gen+1:num_bus+num_gen];
