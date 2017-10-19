@@ -39,3 +39,26 @@ plot([-w_max -w_max],[-10 10],'k:','LineWidth',1.8)
 set(gca,'FontSize',15,'FontName','Times New Roman'); %xlabel('w'); ylabel('v');
 axis([-2 2 -1 1])
 
+%%
+hold all;
+[w,eq]=meshgrid(linspace(0,pi/2,100),linspace(-pi/2,pi/2,100));
+%mesh(w,eq,abs((sin(w+eq)-sin(eq))./w-cos(eq)))
+%mesh(w,eq,abs(-(sin(-w+eq)-sin(eq))./w-cos(eq)))
+mesh(w,eq,cos(eq)-sign(eq).*((sin(sign(eq).*w+eq)-sin(eq))./w))
+xlabel('w'); ylabel('eq');
+
+%%
+close all; figure; hold all;
+delta=linspace(-pi,pi,100);
+d0=1;
+plot(delta,sin(delta))
+plot(delta,sin(d0)+cos(d0)*(delta-d0)-sin(d0)*(delta-d0).^2)
+
+%%
+if 0
+    figure; hold all;
+    theta_rng=linspace(0,pi,100);
+    plot(theta_rng,sin(theta_rng));
+    a=0.4;
+    plot(theta_rng,-a*theta_rng.^2+theta_rng,'r--')
+end

@@ -2,22 +2,14 @@ close all; clear;
 % Assuming delta_max is between 0 and pi.
 M=8; D=2; w=0:0.001:1; Pm=0.2; a=0.8;
 delta_eq=asin(Pm/a);
-delta_max=pi/2;
-
-delta_dash=NR(@(x) sin(x)-sin(delta_eq)-cos(x)*(x-delta_eq),@(x) cos(x)+sin(x)*(x-delta_eq)-cos(x),-pi/2);
-delta_min=max(delta_dash,2*delta_eq-pi/2);
-g_dash=(sin(delta_min)-sin(delta_eq))/(delta_min-delta_eq);
-g_bar=(sin(delta_max)-sin(delta_eq))/(delta_max-delta_eq);
+% delta_dash=NR(@(x) sin(x)-sin(delta_eq)-cos(x)*(x-delta_eq),@(x) cos(x)+sin(x)*(x-delta_eq)-cos(x),-pi/2);
 
 %%
 subplot(2,1,1); hold all; box on; grid on;
 delta_max_plot=0.01:0.01:2;
 sys=tf(1,[M D a*cos(delta_eq)]); [y_impulse,t_impulse]=impulse(sys,300);
 gamma_s_plot=trapz(t_impulse,abs(y_impulse))*ones(size(delta_max_plot));
-g_bar=abs((sin(delta_max_plot+delta_eq)-sin(delta_eq))./delta_max_plot-cos(delta_eq));
-gamma_del_plot=g_bar;
-%g_dash=abs((sin(delta_eq)-sin(delta_max_plot-delta_eq))./(delta_max_plot)-cos(delta_eq));
-%gamma_del_plot=max(g_bar,g_dash);
+gamma_del_plot=cos(delta_eq)+(sign(delta_eq)*sin(delta_eq)-sin(abs(delta_eq)+sign(delta_eq)*delta_max_plot))./delta_max_plot;
 plot(delta_max_plot,gamma_s_plot)
 plot(delta_max_plot,gamma_del_plot)
 plot(delta_max_plot,a*gamma_s_plot.*gamma_del_plot)
@@ -82,7 +74,7 @@ delta_max=delta_max_plot(idx_delmax);
 freq_max=gamma_freq_plot*gamma_del_plot(idx_delmax)*delta_max;
 
 plot_rng=[-1.2*pi 1.2*pi -1 1];
-[x1_plot_ij,x2_plot_ij]=meshgrid(linspace(plot_rng(1),plot_rng(2),30),linspace(plot_rng(3),plot_rng(4),30));
+[x1_plot_ij,x2_plot_ij]=meshgrid(linspace(plot_rng(1),plot_rng(2),100),linspace(plot_rng(3),plot_rng(4),100));
 for i=1:size(x1_plot_ij,1)
     for j=1:size(x2_plot_ij,2)
         x_plot=[x1_plot_ij(i,j); x2_plot_ij(i,j)];
@@ -102,3 +94,24 @@ if 1
     axis(plot_rng)
     set(gca,'FontSize',15,'FontName','Times New Roman'); xlabel('\delta'); ylabel('\omega');
 end
+
+%% Region of Attraction
+figure; box on; hold all;
+sys=tf(M,[M D a*cos(delta_eq)]); [y_impulse,t_impulse]=impulse(sys,300);
+freq_gain=max(abs(y_impulse));
+
+for i=1:size(x1_plot_ij,1)
+    for j=1:size(x2_plot_ij,2)
+        x_plot=[x1_plot_ij(i,j); x2_plot_ij(i,j)];
+        delta_ij=abs(x_plot(1)-delta_eq); freq_ij=abs(x_plot(2));
+        delta_rng=linspace(0,pi/2,100);
+        gamma_del=(cos(delta_eq)*delta_rng+(sign(delta_eq)*sin(delta_eq)-sin(abs(delta_eq)+sign(delta_eq)*delta_rng)));
+        u_max=max(delta_rng-a*gamma_s_plot(1)*gamma_del);
+        feas_region(i,j)=u_max-delta_ij-freq_gain*freq_ij;
+    end
+end
+
+streamslice(x1_plot_ij,x2_plot_ij,dx1_plot,dx2_plot);
+contour(x1_plot_ij,x2_plot_ij,feas_region,[0 0],'LineWidth',3)
+%mesh(x1_plot_ij,x2_plot_ij,feas_region)
+axis(plot_rng)

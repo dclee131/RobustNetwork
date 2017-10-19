@@ -1,6 +1,10 @@
 %% Settings
-%clear; close all;
+clear; close all; sys_case=39; method=1;
+%method=1; % 1: Direct impulse computation / 2: using / 3: both
+
+%%
 if ~exist('sys_case','var'); sys_case=9; end % default IEEE system
+if ~exist('method','var'); method=1; end % default IEEE system
 
 run(['dyn' int2str(sys_case)]) % Get info from data file
 slack_bus=SW.con(1);
@@ -34,7 +38,7 @@ V_eq=x_eq(num_bus+1:end).*(cos(x_eq(1:num_bus))+1i*sin(x_eq(1:num_bus)));
 I_eq=Y*V_eq;
 S_inj=V_eq.*conj(I_eq);
 P_inj=real(S_inj);
-P_G=P_inj(idx_gen); P_G(slack_bus)=-sum(P_inj(setdiff(Bus.con(:,1),slack_bus)));
+P_G=P_inj(idx_gen); P_G(Syn.con(:,1)==slack_bus)=-sum(P_inj(setdiff(Bus.con(:,1),slack_bus)));
 P_L=P_inj(idx_load);
 %P_inj=E'*diag(B_line)*sin(E*delta_eq);
 
@@ -83,26 +87,52 @@ G{3}=ss(A,B_u,C_w,zeros(num_line,num_bus));
 G{4}=ss(A,B_v,C_w,zeros(num_line));
 
 %% Compute Infinity gains
-method=2; % 1: Direct impulse computation / 2: using / 3: both
-
-if method==1 || method==3 % compute with direct integration
+if method==1 || method==3 % compute with direct integration with simulation
     tic;
     for idx_io=1:4
-        sys=G{idx_io};
+        sys=prescale(G{idx_io});
         for i=1:size(sys,1)
             for j=1:size(sys,2)
-                [y_impulse,t_impulse]=impulse(sys(i,j),10);
-                if abs(y_impulse(end))>1; disp(['Gain not converged!' num2str(y_impulse(end))]); return; end;
-                gain_mtx_direct{idx_io}(i,j)=trapz(t_impulse,abs(y_impulse));
+                [num,den] = tfdata(sys(i,j));
+                [r,p,k] = residue(num{1},den{1});
+                [y_impulse,t_impulse]=impulse(sys(i,j));
+                %if abs(y_impulse(end))>1; disp(['Gain not converged!' num2str(y_impulse(end))]); return; end;
+                gain_mtx_sim{idx_io}(i,j)=trapz(t_impulse,abs(y_impulse));
             end
         end
         %disp(['Progress: ' num2str(idx_io) '/4'])
     end
+    gain_mtx=gain_mtx_sim;
     cp_direct=toc;
-    disp(['Computation time for direct approach: ' num2str(cp_direct)])
+    disp(['Computation time for direct approach with simulation: ' num2str(cp_direct)])
 end
 
-if method==2 || method==3
+if method==2 || method==3 % compute with direct integration with analytical expression
+    tic;
+    for idx_io=1:4
+        sys=prescale(G{idx_io});
+        for i=1:size(sys,1)
+            for j=1:size(sys,2)
+                [num,den] = tfdata(sys(i,j));
+                [r,p,k] = residue(num{1},den{1});
+                idx_nontriv=find((abs(real(r)./real(p))>1e-3).*(abs(real(p))>1e-5));
+                idx_triv=find((abs(real(r)./real(p))<1e-3).*(abs(real(p))>1e-5));
+                t_end=max(abs(log(real(abs(r(idx_nontriv)))/1e-5)./real(p(idx_nontriv))));
+                time_step=min(2*pi/10/max(abs(imag(p(idx_nontriv)))),t_end/2);
+                t_impulse=0:time_step:t_end;
+                y_impulse=real(r(idx_nontriv).'*exp(p(idx_nontriv)*t_impulse));
+                %if abs(y_impulse(end))>1; disp(['Gain not converged!' num2str(y_impulse(end))]); return; end;
+                gain_mtx_anly{idx_io}(i,j)=trapz(t_impulse,abs(y_impulse))+sum(abs(real(r(idx_triv))./real(p(idx_triv))));
+            end
+        end
+        %disp(['Progress: ' num2str(idx_io) '/4'])
+    end
+    gain_mtx=gain_mtx_anly;
+    cp_direct=toc;
+    disp(['Computation time for direct approach with analytical expression: ' num2str(cp_direct)])
+end
+
+if method==4
     tic;
     [num,den] = tfdata(G{1}(1,1));
     sys_order=size(den{1},2);
@@ -127,7 +157,13 @@ if method==2 || method==3
     cp_improv=toc;
     disp(['Computation time for direct approach: ' num2str(cp_improv)])
 end
-if method==3; max(max(abs((gain_mtx_direct{1}-gain_mtx{1})))); end
+if method==3; max(max(abs((gain_mtx_anly{4}-gain_mtx_sim{4})))); end
 
 % Test eigenvalue w.r.t. system size
 %n_rng=1:100; for n=n_rng; eig_size(n)=min(real(eig(eye(n)-0.1*ones(n,n)))); end; plot(n_rng,eig_size)
+
+%theta_eq=E*delta_eq;
+%diag(cos(theta_eq)+(sin(abs(theta_eq))-sin(abs(theta_eq)+w_bar))/w_bar)
+%(eye(size_w)-gain_mtx[4]*diagm(cos.(w_0)))*w-gain_mtx[4]*sin.(abs(w_0))+gain_mtx[4]*sinw)
+%eye(num_line)-gain_mtx{4}
+%imagesc(gain_mtx{4}); colorbar;
