@@ -1,4 +1,3 @@
-%% Settings
 %clear; close all; sys_case=39; method=1; % 1: Direct impulse computation / 2: using / 3: both
 
 %% Set up model

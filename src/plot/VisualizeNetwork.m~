@@ -1,0 +1,40 @@
+function VisualizeNetwork(NodeCoordinates,NodalValues,EdgeConnections,FlowValues)
+height = 0;
+hold on; box on;
+set(gca, 'XTickLabelMode', 'manual', 'XTickLabel', []);
+set(gca, 'YTickLabelMode', 'manual', 'YTickLabel', []);
+
+if sys_case==9
+    PoNodeCoord=[40 10; 5 40; 75 40; 40 20; 30 30; 50 30; 20 40; 40 40; 60 40];
+    PowEdgeConnections=[ 9 8; 7 8; 9 6; 7 5; 5 4; 6 4; 2 7; 3 9; 1 4];
+end
+
+for i = 1:size(FlowValues,1)
+   nodeA = [NodeCoordinates(EdgeConnections(i,1),1) NodeCoordinates(EdgeConnections(i,1),2)];
+   nodeB = [NodeCoordinates(EdgeConnections(i,2),1) NodeCoordinates(EdgeConnections(i,2),2)];
+   thickness = abs(FlowValues(i));
+   if FlowValues(i)==0
+       line([nodeA(1) nodeB(1)],[nodeA(2) nodeB(2)],[height   height], 'LineWidth', 1, 'color', 'r','LineStyle',':');
+   elseif FlowValues(i)>0
+       line([nodeA(1) nodeB(1)],[nodeA(2) nodeB(2)],[height   height], 'LineWidth', thickness, 'color', 'r','LineStyle','-');
+       quiver(nodeB(1), nodeB(2),(nodeA(1)-nodeB(1))/2, (nodeA(2)-nodeB(2))/2, 'LineWidth',  thickness, 'color', 'r','MaxHeadSize',300,'AutoScale','on');
+   elseif FlowValues(i)<0
+       line([nodeA(1) nodeB(1)],[nodeA(2) nodeB(2)],[height   height], 'LineWidth', thickness, 'color', 'r','LineStyle','-');
+       quiver(nodeA(1), nodeA(2),(nodeB(1)-nodeA(1))/2, (nodeB(2)-nodeA(2))/2, 'LineWidth', thickness, 'color', 'r','MaxHeadSize',300,'AutoScale','on');
+   end
+end
+
+t=0:2*pi/20:2*pi;
+for i = 1:size(NodalValues,1)
+   center = [NodeCoordinates(i,1) NodeCoordinates(i,2)];
+   radius = abs(NodalValues(i))*.875+1;
+   if NodalValues(i) > 0
+       fill3(sin(t)*radius+center(1),cos(t)*radius+center(2),zeros(size(t))+height,'b');
+   elseif NodalValues(i) < 0
+       fill3(sin(t)*radius+center(1),cos(t)*radius+center(2),zeros(size(t))+height,'r');
+   else
+       fill3(sin(t)*radius+center(1),cos(t)*radius+center(2),zeros(size(t))+height,'w');
+   end
+end
+
+
