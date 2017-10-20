@@ -37,7 +37,9 @@ P_inj=real(S_inj);
 P_G=P_inj(idx_gen); P_G(Syn.con(:,1)==slack_bus)=-sum(P_inj(setdiff(Bus.con(:,1),slack_bus)));
 P_L=P_inj(idx_load);
 
-E_G=E(:,idx_gen); E_L=E(:,idx_load); E=[E_G E_L];
+%E_G=E(:,idx_gen); E_L=E(:,idx_load); E=[E_G E_L];
+E_G=[];
+E=eye_bus(line_frto(:,1),:)-eye_bus(line_frto(:,2),:);
 idx_delta_gen=1:num_gen; idx_omega=num_gen+1:2*num_gen; idx_delta_load=2*num_gen+1:num_bus+num_gen;
 idx_delta=[1:num_gen 2*num_gen+1:num_bus+num_gen];
 
