@@ -1,11 +1,26 @@
-# TSA_SGT
-Transient Stability Assessment based on Small Gain Theorem
+# Robustness against disturbances in power systems under frequency constraints
 
-Description of Files:
+This repository archives the code used for the paper  "Robustness against disturbances in power systems under frequency constraints." IEEE Transactions on Control of Network Systems 6.3 (2019): 971-979.
 
-compute_gain.m: MATLAB code, which contains building the 2nd order swing equation
-optimize_bound.jl: Julia code which use IPOPT to optimize bound and compute the perturbation bound (requires MATLAB and Julia with IPOPT and JuMP downloaded)
+## Description of Files
 
-TSA_SGT_2bus.m: MATLAB code just for 2 bus system for plotting and analysis
-TSA_SGT_Adaptive.m: Future work, which will be an extension of the current implementation (work in progress)
-plot_bounding.m: used for the bounding plot in the paper
+compute_gain.m: compute system gain matrix for the swing equation.
+
+optimize_bound.jl: optimize the perturbation bound. (It requires MATLAB and Julia with IPOPT and JuMP downloaded)
+
+TSA_SGT_2bus.m: creates plots for analyzing 2-bus system.
+
+## Citation
+
+You can find more details and derivation in:
+
+```bibtex
+  @article{lee2019robustness,
+    title={Robustness against disturbances in power systems under frequency constraints},
+    author={Lee, Dongchan and Aolaritei, Liviu and Vu, Thanh Long and Turitsyn, Konstantin},
+    journal={IEEE Transactions on Control of Network Systems},
+    volume={6}, number={3}, pages={971--979}, year={2019}, publisher={IEEE}
+  }
+```
+
+
