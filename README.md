@@ -6,13 +6,13 @@ This repository archives the code used for the paper  "Robustness against distur
 
 compute_gain.m: compute system gain matrix for the swing equation.
 
-optimize_bound.jl: optimize the perturbation bound. (It requires MATLAB and Julia with IPOPT and JuMP downloaded)
+optimize_bound.jl: optimize the perturbation bound. (It requires MATLAB and Julia with IPOPT and JuMP.)
 
 TSA_SGT_2bus.m: creates plots for analyzing 2-bus system.
 
 ## Citation
 
-You can find more details and derivation in:
+You can find more details in:
 
 ```bibtex
   @article{lee2019robustness,
